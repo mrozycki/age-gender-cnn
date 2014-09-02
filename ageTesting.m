@@ -1,4 +1,4 @@
-function [ net, MAE, correlation, accuracy ] = agesTesting( net, datax, datay )
+function [ net, accuracy, correlation, MAE ] = ageTesting( net, datax, datay )
 
     net = cnnff(net, datax);
         

@@ -1,7 +1,8 @@
-function cnn = genderTraining(datax, datay, alpha, batchsize, numepochs, layout)
+function cnn = ageTraining(datax, datay, alpha, batchsize, numepochs, layout)
 rand('state',0)
 
 cnn.layers = layout;
+datay = datay / 100;
 cnn = cnnsetup(cnn, datax, datay);
 
 opts.alpha = alpha;
@@ -10,4 +11,4 @@ opts.numepochs = numepochs;
 
 cnn = cnntrain(cnn, datax, datay, opts);
 cnn = cnnff(cnn, datax);
-disp(['Accuracy on training data: ' 100.0*sum(datay == round(cnn.o))/(floor(size(datax,3)/batchsize) * batchsize)]);
+disp(['MAE on training data: ' num2str(mean(abs(100*cnn.o - datay)))]);

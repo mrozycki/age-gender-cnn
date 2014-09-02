@@ -11,7 +11,6 @@ ages = zeros(1, length(pictures));
 for i=1:length(pictures),
     %disp(pictures(i).name);
     pic = imread(fullfile(path, pictures(i).name));
-    pic = imresize(pic, [width height]);
     
     if isequal(size(size(pic)), [1 3]),
         pic = rgb2gray(pic);
