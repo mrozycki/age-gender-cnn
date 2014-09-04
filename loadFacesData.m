@@ -4,7 +4,7 @@ width = 80;
 height = 80;
 
 pictures = dir(fullfile(path, '*.png'));
-faces = zeros(width,height,length(pictures));
+faces = zeros(width+1,height+1,length(pictures));
 genders = zeros(1, length(pictures));
 ages = zeros(1, length(pictures));
 
@@ -32,3 +32,5 @@ for i=1:length(pictures),
     genders(i) = double(rname(9) == 'm'); % for Gallagher
     ages(i) = str2double(pictures(i).name(12:13)); % for FGNET
 end;
+
+faces = faces(1:width, 1:height, :);
